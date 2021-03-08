@@ -55,7 +55,10 @@ const styles = () => {
     .src("src/styles/main.scss")
     .pipe(plumber())
     .pipe(gulpif(env === "dev", sourcemap.init()))
-    .pipe(sass()) // main.css
+    .pipe(
+      sass({ 
+        includePaths: require('node-normalize-scss').includePaths 
+        })) // main.css
     .pipe(postcss([autoprefixer(), csso()]))
     .pipe(rename("main.min.css"))
     .pipe(gulpif(env === "dev", sourcemap.write(".")))

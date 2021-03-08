@@ -26,10 +26,84 @@
       <div class="modal__body">
         <div class="modal__body-icon"></div>
         <div class="modal__body-group">
-          <p class="modal__body-title">Type Your Full Name</p>
+          <h3 class="modal__body-title">Type Your Full Name</h3>
           <p class="modal__body-description">Enter your full name to generate a signature and initials.</p>
         </div>
       </div>
+
+      <form action="#" method="POST" class="modal__form">
+
+        <div class="modal__inputs-wrapper">
+          <div class="modal__input-wrapper modal__input-wrapper--left">
+            <label for="signature" class="modal__label">Signature</label>
+            <input 
+              type="text"
+              id="signature"
+              name="signature"
+              class="modal__input"
+              placeholder="Your Full Name"
+              required
+            >
+          </div>
+          
+          <div class="modal__input-wrapper modal__input-wrapper--right">
+            <label for="initials" class="modal__label">Initials</label>
+            <input 
+              type="text"
+              id="initials"
+              name="initials"
+              class="modal__input"
+              placeholder="Your Initials"
+              required
+            >
+          </div>
+        </div>
+        
+        <div class="modal__preview">
+          <span class="modal__preview-mark">Preview</span>
+          <a href="#" class="modal__preview-link">Change Style</a>
+        </div>
+
+        <div class="modal__styles">
+          <div class="modal__styles-name modal__styles-name--full">
+            <img 
+              src="img/full-name.png"
+              srcset="img/full-name@2x.png 2x, img/full-name@3x.png 3x"
+              class="modal__styles-image modal__styles-image--left">
+          </div>
+          
+          <div class="modal__styles-name modal__styles-name--first">
+            <img 
+              src="img/fn.png" 
+              srcset="img/fn@2x.png 2x, img/fn@3x.png 3x"
+              class="modal__styles-image modal__styles-image--right">
+          </div>
+        </div>
+
+        <div class="modal__decoration">
+          <span class="modal__decoration-mark">or</span>
+        </div>
+
+        <input 
+          type="file" 
+          id="file-elem" 
+          accept="image/*"
+          class="modal__file"
+          multiple 
+        >
+        <label for="file-elem" class="modal__file-label">
+          <div class="modal__file-icon"></div>
+          <div class="modal__file-group">
+            <h3 class="modal__file-title">Upload Your Signature</h3>
+            <p class="modal__file-text">Upload an image of your handwritten signature here.</p>
+          </div>
+        </label>
+        
+        <div class="modal__form-buttons">
+          <button type="button" class="modal__form-button modal__form-button--cansel">Cancel</button>
+          <button type="submit" class="modal__form-button modal__form-button--sign">Sign</button>
+        </div>
+      </form>
     </div>
     </section>
   </body>

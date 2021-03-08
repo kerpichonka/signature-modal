@@ -23,6 +23,7 @@
     "gulp-stylelint": "^13.0.0",
     "gulp-svgstore": "^7.0.1",
     "gulp-uglify": "^3.0.2",
+    "node-normalize-scss": "^8.1.2",
     "postcss": "^8.2.7",
     "postcss-csso": "^5.0.0",
     "stylelint": "^13.12.0",

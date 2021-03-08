@@ -1,6 +1,6 @@
 .modal {
   width: $containerWidth;
-  border-radius: 4px;
+  border-radius: $borderRadius;
   overflow: hidden;
   background-color: #FFF;
 
@@ -13,7 +13,7 @@
   }
 
   &__title {
-    @include title (20px, 24px, 600, #2f373e);
+    @include title (20px, 600, #2f373e);
   }
 
   &__close-button {
@@ -46,11 +46,12 @@
   }
 
   &__alert-text {
-    color: #546470;
+    @extend %text;
   }
 
   &__body {
     display: flex;
+    margin-bottom: 17px;
   }
 
   &__body-icon {
@@ -58,11 +59,188 @@
   }
 
   &__body-title {
-    @include title (16px, 24px, 600, #38424b);
+    @include title ($secondFontSize, 600, #38424b);
     margin-bottom: 3px;
   }
 
   &__body-description {
-    color: #546470;
+    @extend %text;
   }
+
+  &__inputs-wrapper {
+    display: flex;
+    margin-bottom: 10px;
+  }
+
+  &__input-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+
+    &--left {
+      margin-right: 12px;
+      max-width: 476px;
+    }
+
+    &--right {
+      max-width: 224px;
+    }
+  }
+
+  &__label {
+    width: fit-content;
+    margin-bottom: 4px;
+    @extend %titleBold;
+  }
+
+  &__input {
+    height: 32px;
+    padding: 3px 8px 5px;
+    border: 1px solid #81919D;
+    border-radius: $borderRadius;
+
+    &::placeholder {
+      font-family: 'Open Sans', sans-serif;
+      font-size: $mainFontSize;
+      color: #667988;
+    }
+  }
+
+  &__preview {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4px;
+  }
+
+  &__preview-mark {
+    @extend %titleBold;
+  }
+
+  &__preview-link {
+    font-size: 12px;
+    color: #076dbd;
+  }
+
+  &__styles {
+    display: flex;
+    height: $blockStylesHeight;
+    margin-bottom: 20px;
+    background-color: #f6f8fb;
+    border-radius: $borderRadius;
+  }
+
+  &__styles-name {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &--full {
+      flex-grow: 1;
+      max-width: 482px;
+      border-right: 1px solid #e0e6ed;
+    }
+
+    &--first {
+      min-width: 229px;
+    }
+  
+  }
+
+  &__styles-image {
+
+    &--left {
+      width: 166px;
+      height: 25px;
+    }
+
+    &--right {
+      width: 50px;
+      height: 25px;
+    }
+  }
+
+  &__decoration {
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-bottom: 20px;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 60%;
+      width: calc(50% - 15px);
+      height: 1px;
+      background-color: #e3e6e9;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 60%;
+      width: calc(50% - 15px);
+      height: 1px;
+      background-color: #e3e6e9;
+    }
+  }
+
+  &__decoration-mark {
+    color: #667988;
+  }
+
+  &__file {
+    display: none;
+  }
+
+  &__file-label {
+    display: flex;
+    margin-bottom: 32px;
+    padding: 20px 24px;
+    border: 1px solid #d5dade;
+    border-radius: $borderRadius;
+  }
+
+  &__file-icon {
+    @include icon-property (24px, $iconFileSize, $iconFileSize, url("../img/icons-48-upload-image.svg"));
+  }
+
+  &__file-title {
+    @include title ($secondFontSize, 600, #38424b);
+  }
+
+  &__file-text {
+    @extend %text;
+  }
+  
+  &__form-buttons {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 19px;
+  }
+
+  &__form-button {
+    height: 40px;
+    border-radius: $borderRadius;
+    font-size: $secondFontSize;
+    line-height: $mainLineHeight;
+    font-weight: 600;
+    cursor: pointer;
+
+    &--cansel {
+      color: #38424b;
+      width: 120px;
+      background-color: #e3e6e9;
+    }
+
+    &--sign {
+      width: 136px;
+      color: #fff;
+      background-color: #0777cf;
+    }
+  }
+
 }

@@ -6,9 +6,8 @@
   background: $img no-repeat center / cover;
 }
 
-@mixin title ($size, $height, $weight, $color) {
-  font-size: 20px;
-  line-height: 24px;
-  font-weight: 600;
-  color: #2f373e;
+@mixin title ($size, $weight, $color) {
+  font-size: $size;
+  font-weight: $weight;
+  color: $color;
 }
