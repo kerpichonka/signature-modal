@@ -1,0 +1,14 @@
+@mixin icon-property ($size, $iconWidth, $iconHeight, $img) {
+  margin-right: $size;
+  width: $iconWidth;
+  height: $iconHeight;
+  flex-shrink: 0;
+  background: $img no-repeat center / cover;
+}
+
+@mixin title ($size, $height, $weight, $color) {
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 600;
+  color: #2f373e;
+}

@@ -1,0 +1,68 @@
+.modal {
+  width: $containerWidth;
+  border-radius: 4px;
+  overflow: hidden;
+  background-color: #FFF;
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px 16px 24px;
+    background-color: #f1f2f4;
+  }
+
+  &__title {
+    @include title (20px, 24px, 600, #2f373e);
+  }
+
+  &__close-button {
+    width: $iconButtonCloseSize;
+    height: $iconButtonCloseSize;
+    background-color: inherit;
+    border-width: 0;
+    cursor: pointer;
+  }
+
+  &__close-icon {
+    object-fit: cover;
+    object-position: center;
+  }
+
+  &__alert {
+    display: flex;
+    align-items: center;
+    padding: calc(#{$horizontalPadding / 2}) $horizontalPadding;
+    border-top: 1px solid #E3E6E9;
+    background-color: #E8F2Fa;
+  }
+
+  &__alert-icon {
+    @include icon-property (16px, $iconAlertSize, $iconAlertSize, url("../img/icons-32-info-color.svg"));
+  }
+
+  &__container {
+    padding: 36px $horizontalPadding 20px;
+  }
+
+  &__alert-text {
+    color: #546470;
+  }
+
+  &__body {
+    display: flex;
+  }
+
+  &__body-icon {
+    @include icon-property (24px, 48px, 48px, url("../img/icons-48-type.svg"))
+  }
+
+  &__body-title {
+    @include title (16px, 24px, 600, #38424b);
+    margin-bottom: 3px;
+  }
+
+  &__body-description {
+    color: #546470;
+  }
+}
