@@ -11,3 +11,16 @@
   font-weight: $weight;
   color: $color;
 }
+
+@mixin hover($_property, $_toValue) {
+  transition: #{$_property} 0.3s;
+  &:hover {
+    #{$_property}: $_toValue;
+  }
+}
+
+@mixin adaptiv ($_value) {
+  @media (max-width: $_value) {
+    @content;
+  }
+}

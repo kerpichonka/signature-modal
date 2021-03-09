@@ -1,0 +1,12 @@
+.page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 0 30px;
+  background-color: #2f373e;
+
+  @include adaptiv($mobileCheckPointWidth) {
+    padding: 0;
+  }
+}

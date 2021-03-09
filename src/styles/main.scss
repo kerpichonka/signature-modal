@@ -1,7 +1,9 @@
 @import 'utils/vars';
 @import "utils/mixins";
 @import "utils/extends";
+
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+@import "reset";
 
 * {
   box-sizing: border-box;
@@ -12,25 +14,6 @@ html {
   font-size: $mainFontSize;
   line-height: $mainLineHeight;
 }
-body,
-body * {
-  margin: 0;
-  padding: 0;
-}
 
-input,
-button {
-  border-width: 0;
-}
-
-@import 'modal.scss';
-
-.page {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  padding: 0 30px;
-  background-color: #2f373e;
-}
-
+@import 'page';
+@import 'modal';

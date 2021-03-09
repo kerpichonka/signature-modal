@@ -4,12 +4,21 @@
   overflow: hidden;
   background-color: #FFF;
 
+  @include adaptiv(900px) {
+    max-height: 100vh;
+    overflow-y: auto;
+  }
+
   &__top {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 16px 20px 16px 24px;
+    padding: $verticalPadding 20px $verticalPadding 24px;
     background-color: #f1f2f4;
+
+    @include adaptiv($mobileCheckPointWidth) {
+      padding: $verticalPadding $horizontalPaddingMobileScreen;
+    }
   }
 
   &__title {
@@ -22,6 +31,10 @@
     background-color: inherit;
     border-width: 0;
     cursor: pointer;
+
+    @include adaptiv($mobileCheckPointWidth) {
+      display: none;
+    }
   }
 
   &__close-icon {
@@ -32,9 +45,13 @@
   &__alert {
     display: flex;
     align-items: center;
-    padding: calc(#{$horizontalPadding / 2}) $horizontalPadding;
+    padding: $verticalPadding $horizontalPadding;
     border-top: 1px solid #E3E6E9;
     background-color: #E8F2Fa;
+
+    @include adaptiv($mobileCheckPointWidth) {
+      padding: $verticalPadding $horizontalPaddingMobileScreen;
+    }
   }
 
   &__alert-icon {
@@ -42,7 +59,11 @@
   }
 
   &__container {
-    padding: 36px $horizontalPadding 20px;
+    padding: 36px 0 20px;
+
+    @include adaptiv($mobileCheckPointWidth) {
+      padding: 24px 0 12px;
+    }
   }
 
   &__alert-text {
@@ -52,10 +73,19 @@
   &__body {
     display: flex;
     margin-bottom: 17px;
+    padding: 0 $horizontalPadding;
+
+    @include adaptiv($mobileCheckPointWidth) {
+      margin-bottom: 13px;
+      padding: 0 $horizontalPaddingMobileScreen;
+    }
   }
 
   &__body-icon {
-    @include icon-property (24px, 48px, 48px, url("../img/icons-48-type.svg"))
+    @include icon-property (24px, 48px, 48px, url("../img/icons-48-type.svg"));
+    @include adaptiv($mobileCheckPointWidth) {
+      margin-right: 16px;
+    }
   }
 
   &__body-title {
@@ -67,23 +97,41 @@
     @extend %text;
   }
 
+  &__container-top {
+    padding: 0 $horizontalPadding;
+
+    @include adaptiv($mobileCheckPointWidth) {
+      margin-bottom: 13px;
+      padding: 0 $horizontalPaddingMobileScreen;
+    }
+  }
+
   &__inputs-wrapper {
     display: flex;
-    margin-bottom: 10px;
+    flex-wrap: wrap;
+    width: calc(100% + #{$gap});
+    margin: 0 0 10px -#{$gap};
   }
 
   &__input-wrapper {
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
 
     &--left {
-      margin-right: 12px;
-      max-width: 476px;
+      flex: 2.1 1 0%;
+      min-width: 240px;
+      margin-left: $gap;
+
+
+      @include adaptiv($mobileCheckPointWidth) {
+        margin-bottom: 8px;
+      }
     }
 
     &--right {
-      max-width: 224px;
+      flex: 1 1 0%;
+      min-width: 120px;
+      margin-left: $gap;
     }
   }
 
@@ -94,10 +142,16 @@
   }
 
   &__input {
+    width: 100%;
     height: 32px;
     padding: 3px 8px 5px;
     border: 1px solid #81919D;
     border-radius: $borderRadius;
+
+    @include adaptiv($mobileCheckPointWidth) {
+      height: 40px;
+      padding: 6px 12px 10px;
+    }
 
     &::placeholder {
       font-family: 'Open Sans', sans-serif;
@@ -110,6 +164,10 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 4px;
+
+    @include adaptiv($mobileCheckPointWidth) {
+      margin-bottom: 6px;
+    }
   }
 
   &__preview-mark {
@@ -119,6 +177,9 @@
   &__preview-link {
     font-size: 12px;
     color: #076dbd;
+
+    @include hover(color, rgba(30, 64, 175, 1));
+
   }
 
   &__styles {
@@ -127,6 +188,11 @@
     margin-bottom: 20px;
     background-color: #f6f8fb;
     border-radius: $borderRadius;
+
+    @include adaptiv($mobileCheckPointWidth) {
+      margin-bottom: 16px;
+      height: $blockStylesHeightMobileHeight;
+    }
   }
 
   &__styles-name {
@@ -135,13 +201,14 @@
     align-items: center;
 
     &--full {
-      flex-grow: 1;
-      max-width: 482px;
+      flex: 2.1 1 0%;
+      padding-right: 6px;
       border-right: 1px solid #e0e6ed;
     }
 
     &--first {
-      min-width: 229px;
+      flex: 1 1 0%;
+      padding-left: 6px;
     }
   
   }
@@ -167,24 +234,26 @@
     position: relative;
     margin-bottom: 20px;
 
-    &::before {
+    @include adaptiv($mobileCheckPointWidth) {
+      margin-bottom: 16px;
+    }
+
+    &::before,
+    &::after {
       content: '';
       position: absolute;
-      left: 0;
-      top: 60%;
+      top: calc(50% + 1px / 2);
       width: calc(50% - 15px);
       height: 1px;
       background-color: #e3e6e9;
     }
 
+    &::before {
+      left: 0;
+    }
+
     &::after {
-      content: '';
-      position: absolute;
       right: 0;
-      top: 60%;
-      width: calc(50% - 15px);
-      height: 1px;
-      background-color: #e3e6e9;
     }
   }
 
@@ -202,14 +271,23 @@
     padding: 20px 24px;
     border: 1px solid #d5dade;
     border-radius: $borderRadius;
+
+    @include adaptiv($mobileCheckPointWidth) {
+      padding: $verticalPadding;
+      margin-bottom: 24px;
+    }
   }
 
   &__file-icon {
     @include icon-property (24px, $iconFileSize, $iconFileSize, url("../img/icons-48-upload-image.svg"));
+    @include adaptiv($mobileCheckPointWidth) {
+      margin-right: 16px;
+    }
   }
 
   &__file-title {
     @include title ($secondFontSize, 600, #38424b);
+    margin-bottom: 3px;
   }
 
   &__file-text {
@@ -219,7 +297,12 @@
   &__form-buttons {
     display: flex;
     justify-content: space-between;
-    padding-top: 19px;
+    padding: 19px $horizontalPadding 0 ;
+    border-top: 1px solid #e3e6e9;
+
+    @include adaptiv($mobileCheckPointWidth) {
+      padding: 19px $horizontalPaddingMobileScreen 0;
+    }
   }
 
   &__form-button {
@@ -234,13 +317,24 @@
       color: #38424b;
       width: 120px;
       background-color: #e3e6e9;
+
+      @include hover(background-color, rgba(209, 213, 219, 1));
+
+      @include adaptiv($mobileCheckPointWidth) {
+        width: calc(50% - #{$gap / 2});
+      }
     }
 
     &--sign {
       width: 136px;
       color: #fff;
       background-color: #0777cf;
+
+      @include hover(background-color, rgba(29, 78, 216, 1));
+
+      @include adaptiv($mobileCheckPointWidth) {
+        width: calc(50% - #{$gap / 2});
+      }
     }
   }
-
 }
