@@ -1,0 +1,34 @@
+form.modal__form(action='#' method='POST')
+      .modal__container-top
+        .modal__inputs-wrapper
+          .modal__input-wrapper.modal__input-wrapper--left
+            label.modal__label(for='signature') Signature
+            input#signature.modal__input(type='text' name='signature' placeholder='Your Full Name' required='')
+          .modal__input-wrapper.modal__input-wrapper--right
+            label.modal__label(for='initials') Initials
+            input#initials.modal__input(type='text' name='initials' placeholder='Your Initials' required='')
+        .modal__preview
+          span.modal__preview-mark Preview
+          a.modal__preview-link(href='#') Change Style
+        .modal__styles
+          .modal__styles-name.modal__styles-name--full
+            img.modal__styles-image.modal__styles-image--left(src='img/full-name.png' srcset='img/full-name@2x.png 2x, img/full-name@3x.png 3x')
+          .modal__styles-name.modal__styles-name--first
+            img.modal__styles-image.modal__styles-image--right(src='img/fn.png' srcset='img/fn@2x.png 2x, img/fn@3x.png 3x')
+        .modal__decoration
+          span.modal__decoration-mark or
+        input#file-elem.modal__file(type='file' accept='image/*')
+        label.modal__file-label(for='file-elem')
+          .modal__file-icon
+          .modal__file-group
+            h3.modal__file-title Upload Your Signature
+            p.modal__file-text Upload an image of your handwritten signature here.
+      .modal__form-buttons
+        button.modal__form-button.modal__form-button--cansel(type='button') Cancel
+        button.modal__form-button.modal__form-button--sign(type='submit') Sign
+script.
+  const form = document.querySelector('form')
+  form.addEventListener('submit', (event) => {
+    document.location.reload();
+    event.preventDefault();
+  });

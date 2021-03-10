@@ -48,22 +48,16 @@
     padding: $verticalPadding $horizontalPadding;
     border-top: 1px solid #E3E6E9;
     background-color: #E8F2Fa;
+    margin-bottom: 36px;
 
     @include adaptiv($mobileCheckPointWidth) {
       padding: $verticalPadding $horizontalPaddingMobileScreen;
+      margin-bottom: 24px;
     }
   }
 
   &__alert-icon {
     @include icon-property (16px, $iconAlertSize, $iconAlertSize, url("../img/icons-32-info-color.svg"));
-  }
-
-  &__container {
-    padding: 36px 0 20px;
-
-    @include adaptiv($mobileCheckPointWidth) {
-      padding: 24px 0 12px;
-    }
   }
 
   &__alert-text {
@@ -297,11 +291,11 @@
   &__form-buttons {
     display: flex;
     justify-content: space-between;
-    padding: 19px $horizontalPadding 0 ;
+    padding: 19px $horizontalPadding 20px;
     border-top: 1px solid #e3e6e9;
 
     @include adaptiv($mobileCheckPointWidth) {
-      padding: 19px $horizontalPaddingMobileScreen 0;
+      padding: 19px $horizontalPaddingMobileScreen 12px;
     }
   }
 
