@@ -13,6 +13,7 @@ const gulpif = require("gulp-if");
 const stylelint = require("gulp-stylelint");
 const deploy = require("gulp-gh-pages");
 const svgstore = require("gulp-svgstore");
+const pug = require('gulp-pug');
 
 const sync = require("browser-sync").create();
 
@@ -39,13 +40,12 @@ const copy = (done) => {
   done();
 };
 
-// HTML
-
-const html = () => {
-  return gulp
-    .src("src/*.html")
-    .pipe(htmlmin({ collapseWhitespace: true }))
-    .pipe(gulp.dest("dist"));
+// Pug HTML
+const pug2html = () => {
+  return gulp.src('src/index.pug')
+    .pipe(plumber())
+    .pipe(pug())
+    .pipe(gulp.dest('dist'))
 };
 
 // Styles
@@ -114,7 +114,7 @@ exports.test = test;
 
 const build = gulp.series(
   clean,
-  gulp.parallel(styles, html, copy, images),
+  gulp.parallel(styles, pug2html, copy, images),
   sprite
 );
 
@@ -146,13 +146,13 @@ const server = (done) => {
 
 const watcher = () => {
   gulp.watch("src/styles/**/*.scss", gulp.series(styles));
-  gulp.watch("src/*.html", gulp.series(html, reload));
+  gulp.watch("src/*.pug", gulp.series(pug2html, reload));
 };
 
 // Default
 
 exports.default = gulp.series(
   clean,
-  gulp.parallel(styles, html, sprite, copy),
+  gulp.parallel(styles, pug2html, sprite, copy),
   gulp.series(server, watcher)
 );
